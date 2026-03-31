@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Comparador de Investimentos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --bg:#07101f;
+  --bg2:#0b1628;
+  --bg3:#101e35;
+  --bg4:#162540;
+  --border:rgba(255,255,255,0.06);
+  --border2:rgba(255,255,255,0.11);
+  --gold:#f5a623;
+  --gold-dim:rgba(245,166,35,0.13);
+  --gold-glow:rgba(245,166,35,0.06);
+  --green:#10b981;
+  --blue:#60a5fa;
+  --red:#f87171;
+  --text:#dde4f0;
+  --text2:#7c8fa8;
+  --text3:#4a5a6e;
+  --font:'DM Sans',sans-serif;
+  --mono:'DM Mono',monospace;
+}
+
+html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5}
+
+/* ─── LAYOUT ─────────────────────────────────────── */
+.layout{display:grid;grid-template-columns:300px 1fr;min-height:100vh}
+
+/* ─── SIDEBAR ─────────────────────────────────────── */
+.sidebar{
+  background:var(--bg2);
+  border-right:1px solid var(--border);
+  padding:28px 20px 32px;
+  display:flex;flex-direction:column;gap:24px;
+  overflow-y:auto;
+}
+
+.brand{padding-bottom:16px;border-bottom:1px solid var(--border)}
+.brand-name{font-size:13px;font-weight:600;letter-spacing:.02em;color:#fff}
+.brand-sub{font-size:11px;color:var(--text3);margin-top:3px}
+
+.section-title{
+  font-size:10px;font-weight:600;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--text3);
+  margin-bottom:12px;padding-bottom:8px;
+  border-bottom:1px solid var(--border)
+}
+
+.fields{display:flex;flex-direction:column;gap:8px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+.field label{
+  display:block;font-size:11px;color:var(--text2);
+  margin-bottom:4px;font-weight:400
+}
+
+.field input{
+  width:100%;background:var(--bg3);
+  border:1px solid var(--border2);border-radius:7px;
+  color:var(--text);font-family:var(--mono);font-size:12px;
+  padding:8px 10px;outline:none;
+  transition:border-color .15s,box-shadow .15s;
+  -moz-appearance:textfield;appearance:textfield
+}
+.field input::-webkit-outer-spin-button,
+.field input::-webkit-inner-spin-button{-webkit-appearance:none}
+.field input:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,0.08)}
+
+.ir-pill{
+  display:inline-block;font-size:10px;font-family:var(--mono);
+  background:rgba(245,166,35,0.1);color:var(--gold);
+  padding:3px 9px;border-radius:5px;margin-top:4px
+}
+
+/* ─── MAIN ────────────────────────────────────────── */
+.main{padding:28px 28px 40px;display:flex;flex-direction:column;gap:20px;overflow-y:auto}
+
+/* ─── TOP BAR ─────────────────────────────────────── */
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topbar-title{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
+
+.btn-print{
+  background:transparent;border:1px solid var(--border2);
+  color:var(--text2);font-family:var(--font);font-size:12px;
+  padding:7px 16px;border-radius:7px;cursor:pointer;
+  transition:all .15s;white-space:nowrap
+}
+.btn-print:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ─── WINNER ──────────────────────────────────────── */
+.winner{
+  background:var(--bg2);
+  border:1px solid rgba(245,166,35,0.3);
+  border-radius:12px;padding:22px 24px;
+  position:relative;overflow:hidden
+}
+.winner::after{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 300px 160px at top right, rgba(245,166,35,0.06), transparent);
+  pointer-events:none
+}
+
+.winner-eyebrow{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+.winner-name{font-size:24px;font-weight:600;color:#fff;letter-spacing:-.02em;margin-bottom:18px}
+
+.winner-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+.winner-stat{padding:0 20px 0 0}
+.winner-stat+.winner-stat{border-left:1px solid var(--border);padding-left:20px}
+.winner-stat-label{font-size:10px;color:rgba(245,166,35,0.55);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
+.winner-stat-val{font-family:var(--mono);font-size:17px;font-weight:500;color:var(--gold)}
+
+/* ─── TABLE ───────────────────────────────────────── */
+.table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:auto}
+
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:640px}
+
+thead th{
+  font-size:10px;font-weight:600;letter-spacing:.09em;
+  text-transform:uppercase;color:var(--text3);
+  padding:11px 14px;text-align:right;
+  border-bottom:1px solid var(--border);white-space:nowrap
+}
+thead th:first-child{text-align:left}
+
+tbody tr{border-bottom:1px solid var(--border);transition:background .1s}
+tbody tr:last-child{border-bottom:none}
+tbody tr:hover{background:rgba(255,255,255,0.015)}
+tbody tr.winner-row{background:rgba(245,166,35,0.03)}
+
+td{padding:12px 14px;text-align:right;font-family:var(--mono);font-size:12px;color:var(--text)}
+td:first-child{text-align:left;font-family:var(--font);font-size:13px;font-weight:500;white-space:nowrap}
+td.zero{color:var(--text3);font-size:11px}
+td.vl{color:var(--green);font-weight:500}
+
+.rank{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:20px;height:20px;border-radius:50%;
+  font-size:10px;font-weight:600;font-family:var(--mono);
+  margin-right:8px;flex-shrink:0
+}
+.rank-1{background:var(--gold);color:#000}
+.rank-n{background:var(--bg4);color:var(--text3)}
+
+.badge{
+  font-size:10px;font-family:var(--font);font-weight:500;
+  padding:2px 8px;border-radius:4px;display:inline-block
+}
+.b-isento{background:rgba(16,185,129,0.12);color:#34d399}
+.b-trib{background:rgba(100,116,139,0.12);color:var(--text2)}
+.b-cc{background:rgba(96,165,250,0.12);color:var(--blue)}
+
+/* ─── FOOTER ──────────────────────────────────────── */
+.footer-note{font-size:11px;color:var(--text3);padding-top:4px}
+
+/* ─── PRINT ───────────────────────────────────────── */
+@media print{
+  body{background:#fff!important;color:#111!important}
+  .sidebar{display:none!important}
+  .layout{grid-template-columns:1fr!important}
+  .main{padding:20px!important}
+  .btn-print{display:none!important}
+  .winner{background:#fafafa!important;border-color:#d1ab40!important}
+  .winner::after{display:none}
+  .winner-eyebrow,.winner-stat-label{color:#7c6010!important}
+  .winner-name{color:#111!important}
+  .winner-stat-val{color:#7c6010!important}
+  .winner-stat+.winner-stat{border-color:#e5e7eb!important}
+  .table-wrap{border-color:#e5e7eb!important}
+  thead th{color:#6b7280!important}
+  td{color:#111!important}
+  td.vl{color:#065f46!important}
+  td.zero{color:#9ca3af!important}
+  .rank-1{background:#f59e0b!important;color:#000!important}
+  .rank-n{background:#e5e7eb!important;color:#6b7280!important}
+  .b-isento{background:#d1fae5!important;color:#065f46!important}
+  .b-trib{background:#f3f4f6!important;color:#6b7280!important}
+  .b-cc{background:#dbeafe!important;color:#1d4ed8!important}
+  .footer-note{color:#9ca3af!important}
+  .topbar-title{color:#6b7280!important}
+}
+
+/* ─── RESPONSIVE ──────────────────────────────────── */
+@media(max-width:820px){
+  .layout{grid-template-columns:1fr}
+  .sidebar{border-right:none;border-bottom:1px solid var(--border)}
+  .winner-stats{grid-template-columns:1fr 1fr}
+  .winner-stat:nth-child(2){border-left:none;margin-top:12px;padding-left:0;border-top:1px solid var(--border);padding-top:12px}
+  .winner-stat:nth-child(3){margin-top:12px;padding-top:12px;border-top:1px solid var(--border);border-left:none;padding-left:0}
+  .main{padding:20px 16px}
+}
+</style>
+</head>
+<body>
+
+<div class="layout">
+
+  <!-- ═══ SIDEBAR ════════════════════════════════════ -->
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-name">Comparador de Investimentos</div>
+      <div class="brand-sub">Assessor — uso interno</div>
+    </div>
+
+    <!-- Macro -->
+    <div>
+      <div class="section-title">Parâmetros macro</div>
+      <div class="fields">
+        <div class="row2">
+          <div class="field"><label>CDI (% a.a.)</label><input type="number" id="cdi" value="10.50" step="0.05"></div>
+          <div class="field"><label>Selic (% a.a.)</label><input type="number" id="selic" value="10.75" step="0.05"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>IPCA (% a.a.)</label><input type="number" id="ipca" value="4.50" step="0.05"></div>
+          <div class="field"><label>Capital (R$)</label><input type="number" id="cap" value="100000" step="1000"></div>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Prazo — dias úteis</label><input type="number" id="du" value="252" step="1" min="1"></div>
+          <div class="field"><label>Prazo — dias corridos</label><input type="number" id="dc" value="365" step="1" min="1"></div>
+        </div>
+        <div><span class="ir-pill" id="ir-pill">IR: 15,0%</span></div>
+      </div>
+    </div>
+
+    <!-- Taxas -->
+    <div>
+      <div class="section-title">Taxas dos ativos</div>
+      <div class="fields">
+        <div class="row2">
+          <div class="field"><label>CDB (% CDI)</label><input type="number" id="pctCDB" value="105" step="0.5"></div>
+          <div class="field"><label>LCI (% CDI)</label><input type="number" id="pctLCI" value="90" step="0.5"></div>
+        </div>
+        <div class="field"><label>Debênture Incentivada (IPCA + % a.a.)</label><input type="number" id="sprDeb" value="6.00" step="0.05"></div>
+        <div class="field"><label>Tesouro IPCA+ (IPCA + % a.a.)</label><input type="number" id="sprTIPCA" value="5.50" step="0.05"></div>
+        <div class="field"><label>Tesouro Prefixado (% a.a.)</label><input type="number" id="txTPre" value="11.50" step="0.05"></div>
+        <div class="field"><label>Tesouro Selic (% da Selic)</label><input type="number" id="pctTSelic" value="100" step="0.5"></div>
+        <div class="row2">
+          <div class="field"><label>Fundo RF LP (% CDI)</label><input type="number" id="pctRFLP" value="100" step="0.5"></div>
+          <div class="field"><label>Fundo MM (% CDI)</label><input type="number" id="pctMM" value="110" step="0.5"></div>
+        </div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ═══ MAIN ════════════════════════════════════════ -->
+  <main class="main">
+
+    <div class="topbar">
+      <div class="topbar-title">Resultado comparativo — retorno líquido</div>
+      <button class="btn-print" onclick="window.print()">Imprimir / Salvar PDF</button>
+    </div>
+
+    <!-- Winner -->
+    <div class="winner">
+      <div class="winner-eyebrow">◆ Melhor retorno líquido</div>
+      <div class="winner-name" id="w-name">—</div>
+      <div class="winner-stats">
+        <div class="winner-stat">
+          <div class="winner-stat-label">Valor líquido</div>
+          <div class="winner-stat-val" id="w-vl">—</div>
+        </div>
+        <div class="winner-stat">
+          <div class="winner-stat-label">Rent. período</div>
+          <div class="winner-stat-val" id="w-rp">—</div>
+        </div>
+        <div class="winner-stat">
+          <div class="winner-stat-label">Rent. a.a.</div>
+          <div class="winner-stat-val" id="w-raa">—</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Table -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Ativo</th>
+            <th>Valor bruto</th>
+            <th>IR / Come-cotas</th>
+            <th>Valor líquido</th>
+            <th>Rent. período</th>
+            <th>Rent. a.a.</th>
+            <th>Fiscal</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="footer-note" id="footer-note"></div>
+
+  </main>
+</div>
+
+<script>
+const R = (id) => parseFloat(document.getElementById(id).value);
+const Rpct = (id) => R(id) / 100;
+
+const fmtBRL = n => 'R$\u00a0' + n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtPct = n => (n*100).toFixed(2)+'%';
+const fmtPctSm = n => (n*100).toFixed(1)+'%';
+
+function getAliq(dc){
+  if(dc<=180) return 0.225;
+  if(dc<=360) return 0.20;
+  if(dc<=720) return 0.175;
+  return 0.15;
+}
+
+function calcFundo(cap,du,dc,taxa,aliqCC){
+  const nCC = Math.floor(du/126);
+  if(nCC===0){
+    const vb = cap*Math.pow(1+taxa,du/252);
+    const aliq = getAliq(dc);
+    const ir = (vb-cap)*aliq;
+    return {vb,ir,vl:vb-ir};
+  }
+  let capital = cap, totalCC = 0;
+  for(let i=0;i<nCC;i++){
+    const vbP = capital*Math.pow(1+taxa,126/252);
+    const cc = (vbP-capital)*aliqCC;
+    totalCC += cc;
+    capital = vbP-cc;
+  }
+  const duRes = du-nCC*126;
+  const vbFinal = duRes>0 ? capital*Math.pow(1+taxa,duRes/252) : capital;
+  const aliq = getAliq(dc);
+  const irCompl = Math.max(0,(vbFinal-cap)*aliq-totalCC);
+  const irTotal = totalCC+irCompl;
+  return {vb:vbFinal,ir:irTotal,vl:vbFinal-irCompl};
+}
+
+function calc(){
+  const cap   = R('cap');
+  const du    = R('du');
+  const dc    = R('dc');
+  const cdi   = Rpct('cdi');
+  const selic = Rpct('selic');
+  const ipca  = Rpct('ipca');
+  const aliq  = getAliq(dc);
+
+  document.getElementById('ir-pill').textContent = 'IR aplicável: '+fmtPctSm(aliq);
+
+  const mk = (name,vb,ir,vl,fiscal,ftype,base)=>({
+    name,vb,ir,vl,
+    rp:vl/cap-1,
+    raa:Math.pow(1+vl/cap-1,base)-1,
+    fiscal,ftype
+  });
+
+  // CDB
+  const cdbT = cdi*Rpct('pctCDB');
+  const cdbVb = cap*Math.pow(1+cdbT,du/252);
+  const cdbIr = (cdbVb-cap)*aliq;
+
+  // LCI
+  const lciT = cdi*Rpct('pctLCI');
+  const lciVl = cap*Math.pow(1+lciT,du/252);
+
+  // Debênture (IPCA+, base DC/365, isento)
+  const debT = (1+ipca)*(1+Rpct('sprDeb'))-1;
+  const debVl = cap*Math.pow(1+debT,dc/365);
+
+  // Tesouro IPCA+
+  const tiT = (1+ipca)*(1+Rpct('sprTIPCA'))-1;
+  const tiVb = cap*Math.pow(1+tiT,du/252);
+  const tiIr = (tiVb-cap)*aliq;
+
+  // Tesouro Prefixado
+  const tpVb = cap*Math.pow(1+Rpct('txTPre'),du/252);
+  const tpIr = (tpVb-cap)*aliq;
+
+  // Tesouro Selic
+  const tsT = selic*Rpct('pctTSelic');
+  const tsVb = cap*Math.pow(1+tsT,du/252);
+  const tsIr = (tsVb-cap)*aliq;
+
+  // Fundos
+  const rflp = calcFundo(cap,du,dc,cdi*Rpct('pctRFLP'),0.15);
+  const mm   = calcFundo(cap,du,dc,cdi*Rpct('pctMM'),0.15);
+
+  const results = [
+    mk('CDB',            cdbVb, cdbIr,      cdbVb-cdbIr, fmtPctSm(aliq)+' IR',  'trib', 252/du),
+    mk('LCI',            lciVl, 0,           lciVl,       'Isento IR',            'isento',252/du),
+    mk('Debênture Incent.',debVl,0,           debVl,       'Isento IR',            'isento',365/dc),
+    mk('Tesouro IPCA+',  tiVb,  tiIr,        tiVb-tiIr,   fmtPctSm(aliq)+' IR',  'trib', 252/du),
+    mk('Tesouro Prefixado',tpVb,tpIr,        tpVb-tpIr,   fmtPctSm(aliq)+' IR',  'trib', 252/du),
+    mk('Tesouro Selic',  tsVb,  tsIr,        tsVb-tsIr,   fmtPctSm(aliq)+' IR',  'trib', 252/du),
+    mk('Fundo RF LP',    rflp.vb,rflp.ir,    rflp.vl,     'Come-cotas 15%',       'cc',   252/du),
+    mk('Fundo MM',       mm.vb,  mm.ir,      mm.vl,       'Come-cotas 15%',       'cc',   252/du),
+  ].sort((a,b)=>b.vl-a.vl);
+
+  // Winner
+  const w = results[0];
+  document.getElementById('w-name').textContent = w.name;
+  document.getElementById('w-vl').textContent   = fmtBRL(w.vl);
+  document.getElementById('w-rp').textContent   = fmtPct(w.rp);
+  document.getElementById('w-raa').textContent  = fmtPct(w.raa);
+
+  // Table
+  const badgeClass = {isento:'b-isento',trib:'b-trib',cc:'b-cc'};
+  document.getElementById('tbody').innerHTML = results.map((r,i)=>{
+    const rankCls = i===0?'rank-1':'rank-n';
+    return `<tr class="${i===0?'winner-row':''}">
+      <td><span class="rank ${rankCls}">${i+1}</span>${r.name}</td>
+      <td>${fmtBRL(r.vb)}</td>
+      <td class="${r.ir>0?'':'zero'}">${r.ir>0?fmtBRL(r.ir):'—'}</td>
+      <td class="vl">${fmtBRL(r.vl)}</td>
+      <td>${fmtPct(r.rp)}</td>
+      <td>${fmtPct(r.raa)}</td>
+      <td><span class="badge ${badgeClass[r.ftype]}">${r.fiscal}</span></td>
+    </tr>`;
+  }).join('');
+
+  // Footer
+  const nCC = Math.floor(du/126);
+  document.getElementById('footer-note').textContent =
+    `Capital: ${fmtBRL(cap)} · ${du} dias úteis / ${dc} dias corridos · CDI ${fmtPctSm(cdi)} · IPCA ${fmtPctSm(ipca)}${nCC>0?' · Come-cotas: '+nCC+' evento'+(nCC>1?'s':''):''} · Cálculos para PF. Não constitui recomendação de investimento.`;
+}
+
+document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));
+calc();
+</script>
+</body>
+</html>
