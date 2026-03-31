@@ -215,16 +215,28 @@ td.vl{color:var(--green);font-weight:500}
       <div class="section-title">Parâmetros macro</div>
       <div class="fields">
         <div class="row2">
-          <div class="field"><label>CDI (% a.a.)</label><input type="number" id="cdi" value="10.50" step="0.05"></div>
-          <div class="field"><label>Selic (% a.a.)</label><input type="number" id="selic" value="10.75" step="0.05"></div>
+          <div class="field"><label>CDI (% a.a.)</label><input type="number" id="cdi" value="14.25" step="0.05"></div>
+          <div class="field"><label>Selic (% a.a.)</label><input type="number" id="selic" value="14.50" step="0.05"></div>
         </div>
         <div class="row2">
-          <div class="field"><label>IPCA (% a.a.)</label><input type="number" id="ipca" value="4.50" step="0.05"></div>
+          <div class="field"><label>IPCA (% a.a.)</label><input type="number" id="ipca" value="5.00" step="0.05"></div>
           <div class="field"><label>Capital (R$)</label><input type="number" id="cap" value="100000" step="1000"></div>
         </div>
-        <div class="row2">
-          <div class="field"><label>Prazo — dias úteis</label><input type="number" id="du" value="252" step="1" min="1"></div>
-          <div class="field"><label>Prazo — dias corridos</label><input type="number" id="dc" value="365" step="1" min="1"></div>
+        <div class="field">
+          <label>Prazo</label>
+          <div style="display:grid;grid-template-columns:1fr auto;gap:6px">
+            <input type="number" id="prazo-val" value="1" step="1" min="1">
+            <select id="prazo-unit" style="background:var(--bg3);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:var(--font);font-size:12px;padding:8px 10px;outline:none;cursor:pointer;transition:border-color .15s">
+              <option value="anos">Anos</option>
+              <option value="meses">Meses</option>
+              <option value="du">Dias úteis</option>
+              <option value="dc">Dias corridos</option>
+            </select>
+          </div>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:8px 10px;background:var(--bg4);border-radius:7px;border:1px solid var(--border)">
+          <div style="font-size:11px;color:var(--text2)">Dias úteis<br><span id="du-display" style="font-family:var(--mono);color:var(--text);font-size:12px">252</span></div>
+          <div style="font-size:11px;color:var(--text2)">Dias corridos<br><span id="dc-display" style="font-family:var(--mono);color:var(--text);font-size:12px">365</span></div>
         </div>
         <div><span class="ir-pill" id="ir-pill">IR: 15,0%</span></div>
       </div>
@@ -235,16 +247,16 @@ td.vl{color:var(--green);font-weight:500}
       <div class="section-title">Taxas dos ativos</div>
       <div class="fields">
         <div class="row2">
-          <div class="field"><label>CDB (% CDI)</label><input type="number" id="pctCDB" value="105" step="0.5"></div>
+          <div class="field"><label>CDB (% CDI)</label><input type="number" id="pctCDB" value="99" step="0.5"></div>
           <div class="field"><label>LCI (% CDI)</label><input type="number" id="pctLCI" value="90" step="0.5"></div>
         </div>
-        <div class="field"><label>Debênture Incentivada (IPCA + % a.a.)</label><input type="number" id="sprDeb" value="6.00" step="0.05"></div>
+        <div class="field"><label>Debênture Incentivada (IPCA + % a.a.)</label><input type="number" id="sprDeb" value="8.00" step="0.05"></div>
         <div class="field"><label>Tesouro IPCA+ (IPCA + % a.a.)</label><input type="number" id="sprTIPCA" value="5.50" step="0.05"></div>
-        <div class="field"><label>Tesouro Prefixado (% a.a.)</label><input type="number" id="txTPre" value="11.50" step="0.05"></div>
+        <div class="field"><label>Tesouro Prefixado (% a.a.)</label><input type="number" id="txTPre" value="14.00" step="0.05"></div>
         <div class="field"><label>Tesouro Selic (% da Selic)</label><input type="number" id="pctTSelic" value="100" step="0.5"></div>
         <div class="row2">
           <div class="field"><label>Fundo RF LP (% CDI)</label><input type="number" id="pctRFLP" value="100" step="0.5"></div>
-          <div class="field"><label>Fundo MM (% CDI)</label><input type="number" id="pctMM" value="110" step="0.5"></div>
+          <div class="field"><label>Fundo MM (% CDI)</label><input type="number" id="pctMM" value="90" step="0.5"></div>
         </div>
       </div>
     </div>
@@ -310,6 +322,28 @@ const fmtBRL = n => 'R$\u00a0' + n.toLocaleString('pt-BR',{minimumFractionDigits
 const fmtPct = n => (n*100).toFixed(2)+'%';
 const fmtPctSm = n => (n*100).toFixed(1)+'%';
 
+function getPrazo(){
+  const val  = R('prazo-val');
+  const unit = document.getElementById('prazo-unit').value;
+  let du, dc;
+  if(unit==='anos'){
+    du = Math.round(val*252);
+    dc = Math.round(val*365);
+  } else if(unit==='meses'){
+    du = Math.round(val*21);
+    dc = Math.round(val*30.4375);
+  } else if(unit==='du'){
+    du = Math.round(val);
+    dc = Math.round(val*365/252);
+  } else {
+    dc = Math.round(val);
+    du = Math.round(val*252/365);
+  }
+  document.getElementById('du-display').textContent = du;
+  document.getElementById('dc-display').textContent = dc;
+  return {du, dc};
+}
+
 function getAliq(dc){
   if(dc<=180) return 0.225;
   if(dc<=360) return 0.20;
@@ -342,8 +376,7 @@ function calcFundo(cap,du,dc,taxa,aliqCC){
 
 function calc(){
   const cap   = R('cap');
-  const du    = R('du');
-  const dc    = R('dc');
+  const {du, dc} = getPrazo();
   const cdi   = Rpct('cdi');
   const selic = Rpct('selic');
   const ipca  = Rpct('ipca');
@@ -429,6 +462,7 @@ function calc(){
 }
 
 document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));
+document.getElementById('prazo-unit').addEventListener('change',calc);
 calc();
 </script>
 </body>
