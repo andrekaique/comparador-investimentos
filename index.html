@@ -34,77 +34,86 @@
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--font);font-size:14px;line-height:1.5}
 
 /* ─── LAYOUT ─────────────────────────────────────── */
-.layout{display:grid;grid-template-columns:320px 1fr;min-height:100vh}
+.layout{display:grid;grid-template-columns:330px 1fr;min-height:100vh}
 
 /* ─── SIDEBAR ─────────────────────────────────────── */
 .sidebar{
   background:var(--bg2);
   border-right:1px solid var(--border);
-  padding:28px 20px 32px;
-  display:flex;flex-direction:column;gap:20px;
+  padding:24px 18px 32px;
+  display:flex;flex-direction:column;gap:18px;
   overflow-y:auto;
 }
 
-.brand{padding-bottom:16px;border-bottom:1px solid var(--border)}
+.brand{padding-bottom:14px;border-bottom:1px solid var(--border)}
 .brand-name{font-size:13px;font-weight:600;letter-spacing:.02em;color:#fff}
 .brand-sub{font-size:11px;color:var(--text3);margin-top:3px}
 
 .section-title{
   font-size:10px;font-weight:600;letter-spacing:.12em;
   text-transform:uppercase;color:var(--text3);
-  margin-bottom:10px;padding-bottom:7px;
+  margin-bottom:8px;padding-bottom:6px;
   border-bottom:1px solid var(--border)
 }
 
-.fields{display:flex;flex-direction:column;gap:7px}
-.row2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px}
+.fields{display:flex;flex-direction:column;gap:6px}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.row3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}
+.row-idx{display:grid;grid-template-columns:auto 1fr;gap:5px;align-items:end}
 
 .field label{
-  display:block;font-size:11px;color:var(--text2);
-  margin-bottom:3px;font-weight:400
+  display:block;font-size:10.5px;color:var(--text2);
+  margin-bottom:2px;font-weight:400
 }
 
 .field input, .field select{
   width:100%;background:var(--bg3);
-  border:1px solid var(--border2);border-radius:7px;
-  color:var(--text);font-family:var(--mono);font-size:12px;
-  padding:7px 9px;outline:none;
+  border:1px solid var(--border2);border-radius:6px;
+  color:var(--text);font-family:var(--mono);font-size:11.5px;
+  padding:6px 8px;outline:none;
   transition:border-color .15s,box-shadow .15s;
   -moz-appearance:textfield;appearance:textfield
 }
-.field input[type="text"]{font-family:var(--font);font-size:12px}
+.field input[type="text"]{font-family:var(--font);font-size:11.5px}
 .field input::-webkit-outer-spin-button,
 .field input::-webkit-inner-spin-button{-webkit-appearance:none}
 .field input:focus, .field select:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(245,166,35,0.08)}
 
-.field-inline{
-  display:grid;grid-template-columns:1fr auto;gap:6px;align-items:end
+.sel-sm{
+  background:var(--bg3)!important;border:1px solid var(--border2)!important;border-radius:6px!important;
+  color:var(--text)!important;font-family:var(--font)!important;font-size:10.5px!important;
+  padding:6px 6px!important;outline:none!important;cursor:pointer!important;
+  transition:border-color .15s!important;min-width:74px
 }
-.field-inline .field{flex:1}
+.sel-sm:focus{border-color:var(--gold)!important}
 
 .ir-pill{
-  display:inline-block;font-size:10px;font-family:var(--mono);
+  display:inline-block;font-size:9.5px;font-family:var(--mono);
   background:rgba(245,166,35,0.1);color:var(--gold);
-  padding:3px 9px;border-radius:5px;margin-top:2px
+  padding:2px 8px;border-radius:5px;margin-top:2px
+}
+.ir-pill-iof{
+  display:inline-block;font-size:9.5px;font-family:var(--mono);
+  background:rgba(248,113,113,0.1);color:var(--red);
+  padding:2px 8px;border-radius:5px;margin-top:2px;margin-left:3px
 }
 .ir-pill-prev{
-  display:inline-block;font-size:10px;font-family:var(--mono);
+  display:inline-block;font-size:9.5px;font-family:var(--mono);
   background:rgba(167,139,250,0.1);color:var(--purple);
-  padding:3px 9px;border-radius:5px;margin-top:2px;margin-left:4px
+  padding:2px 8px;border-radius:5px;margin-top:2px;margin-left:3px
 }
 
 .info-box{
-  display:flex;gap:8px;padding:8px 10px;
-  background:var(--bg4);border-radius:7px;
+  display:flex;gap:8px;padding:7px 9px;
+  background:var(--bg4);border-radius:6px;
   border:1px solid var(--border)
 }
-.info-box-item{font-size:11px;color:var(--text2);flex:1}
-.info-box-item span{display:block;font-family:var(--mono);color:var(--text);font-size:12px;margin-top:1px}
+.info-box-item{font-size:10.5px;color:var(--text2);flex:1}
+.info-box-item span{display:block;font-family:var(--mono);color:var(--text);font-size:11.5px;margin-top:1px}
 
 .tip{
-  font-size:10px;color:var(--text3);
-  padding:6px 9px;background:rgba(96,165,250,0.04);
+  font-size:9.5px;color:var(--text3);
+  padding:5px 8px;background:rgba(96,165,250,0.04);
   border-left:2px solid rgba(96,165,250,0.2);
   border-radius:0 5px 5px 0;margin-top:2px;
   line-height:1.4
@@ -114,7 +123,7 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .main{padding:28px 28px 40px;display:flex;flex-direction:column;gap:20px;overflow-y:auto}
 
 /* ─── TOP BAR ─────────────────────────────────────── */
-.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .topbar-title{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--text3)}
 
 .btn-print{
@@ -147,15 +156,25 @@ html,body{height:100%;background:var(--bg);color:var(--text);font-family:var(--f
 .winner-stat-label{font-size:10px;color:rgba(245,166,35,0.55);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px}
 .winner-stat-val{font-family:var(--mono);font-size:17px;font-weight:500;color:var(--gold)}
 
+/* ─── PGBL BENEFIT ────────────────────────────────── */
+.pgbl-box{
+  background:var(--bg2);border:1px solid rgba(167,139,250,0.2);
+  border-radius:10px;padding:14px 18px;
+  display:flex;align-items:center;gap:18px;flex-wrap:wrap
+}
+.pgbl-box-label{font-size:11px;color:var(--purple);flex-shrink:0}
+.pgbl-box-val{font-family:var(--mono);font-size:14px;font-weight:500;color:var(--purple)}
+.pgbl-box-note{font-size:10px;color:var(--text3);flex:1;min-width:200px}
+
 /* ─── TABLE ───────────────────────────────────────── */
 .table-wrap{background:var(--bg2);border:1px solid var(--border);border-radius:12px;overflow:auto}
 
-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:700px}
+table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:780px}
 
 thead th{
   font-size:10px;font-weight:600;letter-spacing:.09em;
   text-transform:uppercase;color:var(--text3);
-  padding:11px 14px;text-align:right;
+  padding:11px 12px;text-align:right;
   border-bottom:1px solid var(--border);white-space:nowrap
 }
 thead th:first-child{text-align:left}
@@ -165,23 +184,23 @@ tbody tr:last-child{border-bottom:none}
 tbody tr:hover{background:rgba(255,255,255,0.015)}
 tbody tr.winner-row{background:rgba(245,166,35,0.03)}
 
-td{padding:12px 14px;text-align:right;font-family:var(--mono);font-size:12px;color:var(--text)}
-td:first-child{text-align:left;font-family:var(--font);font-size:13px;font-weight:500;white-space:nowrap}
+td{padding:10px 12px;text-align:right;font-family:var(--mono);font-size:11.5px;color:var(--text)}
+td:first-child{text-align:left;font-family:var(--font);font-size:12.5px;font-weight:500;white-space:nowrap}
 td.zero{color:var(--text3);font-size:11px}
 td.vl{color:var(--green);font-weight:500}
 
 .rank{
   display:inline-flex;align-items:center;justify-content:center;
-  width:20px;height:20px;border-radius:50%;
-  font-size:10px;font-weight:600;font-family:var(--mono);
-  margin-right:8px;flex-shrink:0
+  width:18px;height:18px;border-radius:50%;
+  font-size:9px;font-weight:600;font-family:var(--mono);
+  margin-right:6px;flex-shrink:0
 }
 .rank-1{background:var(--gold);color:#000}
 .rank-n{background:var(--bg4);color:var(--text3)}
 
 .badge{
-  font-size:10px;font-family:var(--font);font-weight:500;
-  padding:2px 8px;border-radius:4px;display:inline-block
+  font-size:9.5px;font-family:var(--font);font-weight:500;
+  padding:2px 7px;border-radius:4px;display:inline-block
 }
 .b-isento{background:rgba(16,185,129,0.12);color:#34d399}
 .b-trib{background:rgba(100,116,139,0.12);color:var(--text2)}
@@ -247,9 +266,9 @@ td.vl{color:var(--green);font-weight:500}
   max-height:0;overflow:hidden;
   transition:max-height .35s ease
 }
-.tax-section.open .tax-body{max-height:800px}
+.tax-section.open .tax-body{max-height:900px}
 .tax-body-inner{padding:0 22px 20px}
-.tax-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.tax-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
 .tax-card{
   background:var(--bg3);border:1px solid var(--border);
   border-radius:10px;overflow:hidden
@@ -262,18 +281,19 @@ td.vl{color:var(--green);font-weight:500}
 .tax-card-title.rf{color:var(--gold);background:rgba(245,166,35,0.03)}
 .tax-card-title.prev{color:var(--purple);background:rgba(167,139,250,0.03)}
 .tax-card-title.prog{color:var(--blue);background:rgba(96,165,250,0.03)}
+.tax-card-title.iof{color:var(--red);background:rgba(248,113,113,0.03)}
 
 .tax-mini{width:100%;border-collapse:collapse}
 .tax-mini th{
   font-size:9px;font-weight:600;letter-spacing:.08em;
   text-transform:uppercase;color:var(--text3);
-  padding:8px 12px;text-align:left;
+  padding:7px 12px;text-align:left;
   border-bottom:1px solid var(--border)
 }
 .tax-mini th:last-child{text-align:right}
 .tax-mini td{
   font-size:11px;font-family:var(--mono);
-  color:var(--text);padding:6px 12px;
+  color:var(--text);padding:5px 12px;
   border-bottom:1px solid rgba(255,255,255,0.03)
 }
 .tax-mini td:last-child{text-align:right;font-weight:500}
@@ -281,12 +301,8 @@ td.vl{color:var(--green);font-weight:500}
 .tax-mini tr.active-row td{background:rgba(245,166,35,0.06);color:var(--gold)}
 .tax-mini tr.active-row-prev td{background:rgba(167,139,250,0.06);color:var(--purple)}
 .tax-note{
-  font-size:10px;color:var(--text3);padding:10px 14px 10px;
+  font-size:10px;color:var(--text3);padding:8px 14px;
   line-height:1.5;border-top:1px solid var(--border)
-}
-
-@media(max-width:860px){
-  .tax-grid{grid-template-columns:1fr}
 }
 
 /* ─── FOOTER ──────────────────────────────────────── */
@@ -319,6 +335,9 @@ td.vl{color:var(--green);font-weight:500}
   .b-cap{background:#fef3c7!important;color:#92400e!important}
   .footer-note{color:#9ca3af!important}
   .topbar-title{color:#6b7280!important}
+  .pgbl-box{border-color:#c4b5fd!important;background:#f5f3ff!important}
+  .pgbl-box-label,.pgbl-box-val{color:#6d28d9!important}
+  .pgbl-box-note{color:#9ca3af!important}
   .advisories{border-color:#e5e7eb!important;background:#fafafa!important}
   .adv-title{color:#6b7280!important;border-color:#e5e7eb!important}
   .adv-item{color:#374151!important}
@@ -335,6 +354,7 @@ td.vl{color:var(--green);font-weight:500}
   .tax-card-title.rf{background:#fffbeb!important;color:#92400e!important;border-color:#e5e7eb!important}
   .tax-card-title.prev{background:#f5f3ff!important;color:#6d28d9!important;border-color:#e5e7eb!important}
   .tax-card-title.prog{background:#eff6ff!important;color:#1d4ed8!important;border-color:#e5e7eb!important}
+  .tax-card-title.iof{background:#fef2f2!important;color:#991b1b!important;border-color:#e5e7eb!important}
   .tax-mini th{color:#6b7280!important;border-color:#e5e7eb!important}
   .tax-mini td{color:#111!important;border-color:#f3f4f6!important}
   .tax-mini tr.active-row td{background:#fffbeb!important;color:#92400e!important}
@@ -350,6 +370,8 @@ td.vl{color:var(--green);font-weight:500}
   .winner-stat:nth-child(2){border-left:none;margin-top:12px;padding-left:0;border-top:1px solid var(--border);padding-top:12px}
   .winner-stat:nth-child(3){margin-top:12px;padding-top:12px;border-top:1px solid var(--border);border-left:none;padding-left:0}
   .main{padding:20px 16px}
+  .tax-grid{grid-template-columns:1fr}
+  .pgbl-box{flex-direction:column;gap:8px}
 }
 </style>
 </head>
@@ -365,7 +387,7 @@ td.vl{color:var(--green);font-weight:500}
       <div class="brand-sub">Assessor — uso interno</div>
     </div>
 
-    <!-- Macro -->
+    <!-- ── Macro ───────────────────────────────── -->
     <div>
       <div class="section-title">Parâmetros macro</div>
       <div class="fields">
@@ -380,9 +402,9 @@ td.vl{color:var(--green);font-weight:500}
         </div>
         <div class="field">
           <label>Prazo</label>
-          <div style="display:grid;grid-template-columns:1fr auto;gap:6px">
+          <div style="display:grid;grid-template-columns:1fr auto;gap:5px">
             <input type="number" id="prazo-val" value="1" step="1" min="1">
-            <select id="prazo-unit" style="background:var(--bg3);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:var(--font);font-size:12px;padding:7px 10px;outline:none;cursor:pointer;transition:border-color .15s">
+            <select id="prazo-unit" class="sel-sm">
               <option value="anos">Anos</option>
               <option value="meses">Meses</option>
               <option value="du">Dias úteis</option>
@@ -396,68 +418,100 @@ td.vl{color:var(--green);font-weight:500}
         </div>
         <div>
           <span class="ir-pill" id="ir-pill">IR: 15,0%</span>
+          <span class="ir-pill-iof" id="ir-pill-iof" style="display:none">IOF: 0%</span>
           <span class="ir-pill-prev" id="ir-pill-prev">Prev: 35,0%</span>
         </div>
       </div>
     </div>
 
-    <!-- Renda Fixa Bancária -->
+    <!-- ── Renda Fixa Bancária ─────────────────── -->
     <div>
       <div class="section-title">Renda fixa bancária</div>
       <div class="fields">
         <div class="row2">
-          <div class="field"><label>CDB (% CDI)</label><input type="number" id="pctCDB" value="99" step="0.5"></div>
-          <div class="field"><label>LCI (% CDI)</label><input type="number" id="pctLCI" value="90" step="0.5"></div>
+          <div class="field"><label>CDB pós (% CDI)</label><input type="number" id="pctCDB" value="99" step="0.5"></div>
+          <div class="field"><label>LCI/LCA (% CDI)</label><input type="number" id="pctLCI" value="90" step="0.5"></div>
         </div>
+        <div class="row2">
+          <div class="field"><label>CDB IPCA+ (% a.a.)</label><input type="number" id="sprCDBipca" value="6.50" step="0.05"></div>
+          <div class="field"><label>CDB Pré (% a.a.)</label><input type="number" id="txCDBpre" value="14.50" step="0.05"></div>
+        </div>
+        <div class="tip">CDB e LCI/LCA: FGC até R$ 250 mil por CPF/instituição (teto global R$ 1 MM a cada 4 anos).</div>
       </div>
     </div>
 
-    <!-- Crédito Privado Isento -->
+    <!-- ── Crédito Privado Isento ──────────────── -->
     <div>
       <div class="section-title">Crédito privado isento</div>
       <div class="fields">
-        <div class="field">
-          <label>Debênture — nome do emissor</label>
-          <input type="text" id="debNome" value="Debênture Incent." placeholder="Ex: Vale IPCA+ 2030">
+        <div class="field"><label>Debênture — emissor</label><input type="text" id="debNome" value="Debênture Incent." placeholder="Ex: Vale IPCA+ 2030"></div>
+        <div class="row-idx">
+          <div class="field"><label>Indexador</label>
+            <select id="debIdx" class="sel-sm"><option value="ipca">IPCA+</option><option value="cdi">CDI+</option><option value="pre">Pré</option></select>
+          </div>
+          <div class="field"><label>Taxa (% a.a.)</label><input type="number" id="sprDeb" value="8.00" step="0.05"></div>
         </div>
-        <div class="field"><label>Debênture (IPCA + % a.a.)</label><input type="number" id="sprDeb" value="8.00" step="0.05"></div>
-        <div class="field">
-          <label>CRI — nome do emissor</label>
-          <input type="text" id="criNome" value="CRI" placeholder="Ex: CRI Cyrela 2029">
+
+        <div class="field"><label>CRI — emissor</label><input type="text" id="criNome" value="CRI" placeholder="Ex: CRI Cyrela 2029"></div>
+        <div class="row-idx">
+          <div class="field"><label>Indexador</label>
+            <select id="criIdx" class="sel-sm"><option value="ipca">IPCA+</option><option value="cdi">CDI+</option><option value="pre">Pré</option></select>
+          </div>
+          <div class="field"><label>Taxa (% a.a.)</label><input type="number" id="sprCRI" value="7.50" step="0.05"></div>
         </div>
-        <div class="field"><label>CRI (IPCA + % a.a.)</label><input type="number" id="sprCRI" value="7.50" step="0.05"></div>
-        <div class="field">
-          <label>CRA — nome do emissor</label>
-          <input type="text" id="craNome" value="CRA" placeholder="Ex: CRA BRF 2028">
+
+        <div class="field"><label>CRA — emissor</label><input type="text" id="craNome" value="CRA" placeholder="Ex: CRA BRF 2028"></div>
+        <div class="row-idx">
+          <div class="field"><label>Indexador</label>
+            <select id="craIdx" class="sel-sm"><option value="ipca">IPCA+</option><option value="cdi">CDI+</option><option value="pre">Pré</option></select>
+          </div>
+          <div class="field"><label>Taxa (% a.a.)</label><input type="number" id="sprCRA" value="7.00" step="0.05"></div>
         </div>
-        <div class="field"><label>CRA (IPCA + % a.a.)</label><input type="number" id="sprCRA" value="7.00" step="0.05"></div>
-        <div class="tip">CRI, CRA e Debêntures Incentivadas: isentos de IR para PF (Lei 12.431). Risco de crédito privado — sem cobertura do FGC.</div>
+        <div class="tip">Isentos de IR para PF (Lei 12.431/11). Crédito privado — sem FGC. Avalie rating e garantias. Convenção pode ser DU/252 ou DC/365 conforme escritura.</div>
       </div>
     </div>
 
-    <!-- Títulos Públicos -->
+    <!-- ── Títulos Públicos ────────────────────── -->
     <div>
-      <div class="section-title">Títulos públicos</div>
+      <div class="section-title">Títulos públicos (Tesouro Direto)</div>
       <div class="fields">
         <div class="field"><label>Tesouro IPCA+ (IPCA + % a.a.)</label><input type="number" id="sprTIPCA" value="5.50" step="0.05"></div>
         <div class="field"><label>Tesouro Prefixado (% a.a.)</label><input type="number" id="txTPre" value="14.00" step="0.05"></div>
-        <div class="field"><label>Tesouro Selic (% da Selic)</label><input type="number" id="pctTSelic" value="100" step="0.5"></div>
+        <div class="field"><label>Tesouro Selic (Selic + % a.a.)</label><input type="number" id="sprTSelic" value="0.0615" step="0.001"></div>
+        <div class="field"><label>Custódia B3 (% a.a.)</label><input type="number" id="txCustB3" value="0.20" step="0.01"></div>
+        <div class="tip">Custódia B3: 0,20% a.a. Tesouro Selic isento até R$ 10 mil. Cobrada semestralmente sobre o valor investido.</div>
       </div>
     </div>
 
-    <!-- Fundos -->
+    <!-- ── Fundos ──────────────────────────────── -->
     <div>
       <div class="section-title">Fundos de investimento</div>
       <div class="fields">
         <div class="row2">
-          <div class="field"><label>Fundo RF LP (% CDI)</label><input type="number" id="pctRFLP" value="100" step="0.5"></div>
-          <div class="field"><label>Fundo MM (% CDI)</label><input type="number" id="pctMM" value="90" step="0.5"></div>
+          <div class="field"><label>Fundo RF (% CDI)</label><input type="number" id="pctRFLP" value="100" step="0.5"></div>
+          <div class="field"><label>Tx adm RF (% a.a.)</label><input type="number" id="txAdmRF" value="0.50" step="0.05"></div>
         </div>
-        <div class="tip">Come-cotas semestral (mai/nov) a 15% sobre rendimento. IR complementar no resgate pela tabela regressiva.</div>
+        <div class="field"><label>Classificação Fundo RF</label>
+          <select id="fundoRFprazo" class="sel-sm" style="width:100%">
+            <option value="lp">Longo prazo — come-cotas 15%</option>
+            <option value="cp">Curto prazo — come-cotas 20%</option>
+          </select>
+        </div>
+        <div class="row2">
+          <div class="field"><label>Fundo MM (% CDI)</label><input type="number" id="pctMM" value="90" step="0.5"></div>
+          <div class="field"><label>Tx adm MM (% a.a.)</label><input type="number" id="txAdmMM" value="1.00" step="0.05"></div>
+        </div>
+        <div class="field"><label>Classificação Fundo MM</label>
+          <select id="fundoMMprazo" class="sel-sm" style="width:100%">
+            <option value="lp">Longo prazo — come-cotas 15%</option>
+            <option value="cp">Curto prazo — come-cotas 20%</option>
+          </select>
+        </div>
+        <div class="tip">LP: duration média > 365d, come-cotas 15%, IR regr. 22,5→15%. CP: duration ≤ 365d, come-cotas 20%, IR 22,5→20%. Tx adm já deduzida do rendimento.</div>
       </div>
     </div>
 
-    <!-- Previdência & Capitalização -->
+    <!-- ── Previdência & Capitalização ─────────── -->
     <div>
       <div class="section-title">Previdência & capitalização</div>
       <div class="fields">
@@ -467,14 +521,17 @@ td.vl{color:var(--green);font-weight:500}
         </div>
         <div class="field">
           <label>Regime tributário previdência</label>
-          <select id="prevRegime" style="background:var(--bg3);border:1px solid var(--border2);border-radius:7px;color:var(--text);font-family:var(--font);font-size:12px;padding:7px 10px;outline:none;cursor:pointer;transition:border-color .15s">
+          <select id="prevRegime" class="sel-sm" style="width:100%">
             <option value="regressivo">Regressivo (35% → 10%)</option>
             <option value="progressivo">Progressivo (tabela IRPF)</option>
           </select>
         </div>
-        <div class="tip">VGBL: IR sobre rendimento. PGBL: IR sobre montante total (dedução de até 12% da renda bruta no IRPF). Sem come-cotas.</div>
-        <div class="field"><label>Capitalização (atualiza pela TR, % a.a.)</label><input type="number" id="txCap" value="0.50" step="0.05"></div>
-        <div class="tip">Capitalização: atualiza pela TR + taxa de juro contratada. IR regressivo sobre rendimento. Sem cobertura FGC — produto de seguro (SUSEP).</div>
+        <div class="field"><label>Alíquota marginal IRPF do cliente (%)</label><input type="number" id="aliqMarginal" value="27.5" step="0.5"></div>
+        <div class="tip">VGBL: IR sobre rendimento. PGBL: IR sobre valor total, mas permite deduzir até 12% da renda bruta no IRPF (modelo completo). Sem come-cotas.</div>
+
+        <div class="field"><label>Capitalização (juros % a.a., sobre TR)</label><input type="number" id="txCap" value="0.50" step="0.05"></div>
+        <div class="field"><label>Quota de capitalização (%)</label><input type="number" id="quotaCap" value="70" step="1" min="1" max="100"></div>
+        <div class="tip">Somente a quota de capitalização (tipicamente 50-70%) rende TR + juros. Restante: sorteio + despesas administrativas. Produto SUSEP — sem FGC.</div>
       </div>
     </div>
 
@@ -508,6 +565,15 @@ td.vl{color:var(--green);font-weight:500}
       </div>
     </div>
 
+    <!-- PGBL benefit -->
+    <div class="pgbl-box" id="pgbl-box">
+      <div>
+        <div class="pgbl-box-label">◆ Economia fiscal estimada — PGBL</div>
+        <div class="pgbl-box-val" id="pgbl-benef">—</div>
+      </div>
+      <div class="pgbl-box-note">O PGBL permite deduzir o aporte (até 12% da renda bruta) no IRPF. Este valor representa a restituição estimada na declaração e não está somado ao ranking — deve ser considerado na análise comparativa pelo assessor.</div>
+    </div>
+
     <!-- Table -->
     <div class="table-wrap">
       <table>
@@ -515,7 +581,7 @@ td.vl{color:var(--green);font-weight:500}
           <tr>
             <th>Ativo</th>
             <th>Valor bruto</th>
-            <th>IR / Come-cotas</th>
+            <th>IOF + IR</th>
             <th>Valor líquido</th>
             <th>Rent. período</th>
             <th>Rent. a.a.</th>
@@ -537,27 +603,31 @@ td.vl{color:var(--green);font-weight:500}
       <div class="adv-items">
         <div class="adv-item">
           <div class="adv-icon warn">⚡</div>
-          <div><strong>Marcação a mercado.</strong> Os preços dos títulos e ativos de renda fixa podem oscilar antes do vencimento. Títulos prefixados e indexados ao IPCA sofrem flutuação diária — o retorno apresentado só é garantido se mantido até o vencimento.</div>
+          <div><strong>Marcação a mercado.</strong> Os preços dos títulos de renda fixa oscilam diariamente antes do vencimento. Prefixados e IPCA+ são especialmente sensíveis a variações de juros. O retorno aqui apresentado pressupõe carregamento até o vencimento (held to maturity).</div>
         </div>
         <div class="adv-item">
           <div class="adv-icon lock">⏳</div>
-          <div><strong>Carência e liquidez.</strong> Muitos produtos possuem prazos de carência ou liquidez restrita. LCIs costumam ter carência mínima de 90 dias (Res. CMN 5.119/24). CDBs podem ter liquidez diária ou não. CRIs, CRAs e debêntures geralmente não possuem recompra garantida — avalie o mercado secundário. Fundos podem ter prazos de cotização e resgate (D+1 a D+30 ou mais).</div>
+          <div><strong>Carência e liquidez.</strong> LCI: carência mínima de 12 meses; LCA: 9 meses (Res. CMN 5.119/2024). CDBs podem ter liquidez diária ou carência contratual. CRIs, CRAs e debêntures geralmente não possuem recompra garantida — negocie no mercado secundário com possível deságio. Fundos podem ter cotização D+1 a D+30+.</div>
         </div>
         <div class="adv-item">
           <div class="adv-icon info">🎯</div>
-          <div><strong>Horizonte de investimento.</strong> Alinhe o prazo do ativo ao seu objetivo. Resgates antecipados podem resultar em perdas por marcação a mercado ou incidência de alíquotas de IR mais altas (tabela regressiva). Para previdência, o benefício fiscal pleno do regime regressivo só é atingido após 10 anos.</div>
+          <div><strong>Horizonte de investimento.</strong> Alinhe o prazo do ativo ao seu objetivo. Resgates antecipados podem gerar perdas por marcação a mercado e incidência de alíquotas de IR mais altas. Para previdência regressiva, o benefício pleno (10%) só é atingido após 10 anos.</div>
         </div>
         <div class="adv-item">
           <div class="adv-icon shield">🛡</div>
-          <div><strong>Garantias e risco de crédito.</strong> CDBs e LCIs contam com cobertura do FGC até R$ 250 mil por CPF/instituição. Títulos públicos possuem garantia soberana. CRIs, CRAs e debêntures são de crédito privado — sem FGC. Capitalização é produto de seguro regulado pela SUSEP, sem FGC. Avalie sempre o rating do emissor.</div>
+          <div><strong>Garantias e risco de crédito.</strong> CDBs e LCI/LCA: FGC até R$ 250 mil/CPF/instituição (teto R$ 1 MM/4 anos). Títulos públicos: risco soberano. CRIs, CRAs e debêntures: crédito privado sem FGC — avalie rating e garantias. Capitalização: SUSEP, sem FGC.</div>
         </div>
         <div class="adv-item">
           <div class="adv-icon warn">📋</div>
-          <div><strong>PGBL e dedução fiscal.</strong> O PGBL permite deduzir até 12% da renda bruta anual no IRPF (modelo completo), mas no resgate, o IR incide sobre o montante total — e não apenas sobre o rendimento. Compare com o VGBL (IR somente sobre ganhos) conforme o perfil tributário do cliente.</div>
+          <div><strong>PGBL vs. VGBL.</strong> PGBL: IR no resgate sobre montante total, mas dedução de até 12% da renda bruta no IRPF (modelo completo). VGBL: IR só sobre ganhos, sem dedução. A economia fiscal do PGBL está destacada acima da tabela.</div>
         </div>
         <div class="adv-item">
           <div class="adv-icon info">📊</div>
-          <div><strong>Simulação simplificada.</strong> Este comparativo utiliza taxas nominais em regime de capitalização composta contínua. Não considera taxas de administração, custódia (B3 cobra 0,20% a.a. no Tesouro Direto acima de R$ 10 mil em Selic), performance, IOF (incide nos primeiros 30 dias), nem spread de compra/venda no mercado secundário.</div>
+          <div><strong>Premissas da simulação.</strong> Capitalização composta discreta. Inclui IOF regressivo (primeiros 30 DC) e custódia B3 onde aplicável. Taxa de administração informada é descontada do rendimento bruto dos fundos. Não considera taxas de performance, spread de compra/venda no secundário, nem custódia de corretora.</div>
+        </div>
+        <div class="adv-item">
+          <div class="adv-icon warn">⚠</div>
+          <div><strong>Convenção de base.</strong> CDI/Selic: base DU/252. IPCA+ e crédito privado: base DC/365 (convenção padrão de mercado — escrituras podem adotar DU/252). Prefixado: DU/252. A coluna "Rent. a.a." anualiza pela base de cada ativo — compare com atenção.</div>
         </div>
       </div>
     </div>
@@ -567,7 +637,7 @@ td.vl{color:var(--green);font-weight:500}
       <div class="tax-header" onclick="document.getElementById('tax-section').classList.toggle('open')">
         <div class="tax-header-left">
           <div class="tax-header-title">Tabelas de tributação — referência educativa</div>
-          <div class="tax-header-badge">atualizado</div>
+          <div class="tax-header-badge">base legal vigente</div>
         </div>
         <div class="tax-chevron">▼</div>
       </div>
@@ -577,9 +647,9 @@ td.vl{color:var(--green);font-weight:500}
 
             <!-- Regressiva RF -->
             <div class="tax-card">
-              <div class="tax-card-title rf">Regressiva — Renda Fixa (CDB, Tesouro, Fundos)</div>
+              <div class="tax-card-title rf">IR Regressiva — Renda Fixa</div>
               <table class="tax-mini">
-                <thead><tr><th>Prazo</th><th>Alíquota</th></tr></thead>
+                <thead><tr><th>Prazo (dias corridos)</th><th>Alíquota</th></tr></thead>
                 <tbody id="tb-rf">
                   <tr><td>Até 180 dias</td><td>22,5%</td></tr>
                   <tr><td>181 a 360 dias</td><td>20,0%</td></tr>
@@ -587,12 +657,12 @@ td.vl{color:var(--green);font-weight:500}
                   <tr><td>Acima de 720 dias</td><td>15,0%</td></tr>
                 </tbody>
               </table>
-              <div class="tax-note">Base legal: Lei 11.033/2004, art. 1°. Incide sobre o rendimento (ganho de capital). IOF regressivo nos primeiros 30 dias (Lei 5.143/66).</div>
+              <div class="tax-note">Lei 11.033/2004. Incide sobre rendimento. Fundos CP: alíquota mínima 20%.</div>
             </div>
 
             <!-- Regressiva Previdência -->
             <div class="tax-card">
-              <div class="tax-card-title prev">Regressiva — Previdência (VGBL / PGBL)</div>
+              <div class="tax-card-title prev">IR Regressiva — Previdência</div>
               <table class="tax-mini">
                 <thead><tr><th>Prazo de acumulação</th><th>Alíquota</th></tr></thead>
                 <tbody id="tb-prev">
@@ -604,23 +674,35 @@ td.vl{color:var(--green);font-weight:500}
                   <tr><td>Acima de 10 anos</td><td>10%</td></tr>
                 </tbody>
               </table>
-              <div class="tax-note">Base legal: Lei 11.053/2004. Opção irretratável no momento da contratação. VGBL: incide sobre rendimento. PGBL: incide sobre montante total.</div>
+              <div class="tax-note">Lei 11.053/2004. Opção irretratável. VGBL: sobre rendimento. PGBL: sobre montante total.</div>
             </div>
 
             <!-- Progressiva IRPF -->
-            <div class="tax-card" style="grid-column:1/-1">
-              <div class="tax-card-title prog">Progressiva — Tabela IRPF (base mensal 2024/2025)</div>
+            <div class="tax-card">
+              <div class="tax-card-title prog">Progressiva — IRPF (base anual)</div>
               <table class="tax-mini">
-                <thead><tr><th>Base de cálculo mensal</th><th>Alíquota</th><th>Dedução</th></tr></thead>
+                <thead><tr><th>Base de cálculo anual</th><th>Alíq.</th><th>Dedução</th></tr></thead>
                 <tbody>
-                  <tr><td>Até R$ 2.259,20</td><td style="text-align:right">Isento</td><td style="text-align:right">—</td></tr>
-                  <tr><td>R$ 2.259,21 a R$ 2.826,65</td><td style="text-align:right">7,5%</td><td style="text-align:right">R$ 169,44</td></tr>
-                  <tr><td>R$ 2.826,66 a R$ 3.751,05</td><td style="text-align:right">15,0%</td><td style="text-align:right">R$ 381,44</td></tr>
-                  <tr><td>R$ 3.751,06 a R$ 4.664,68</td><td style="text-align:right">22,5%</td><td style="text-align:right">R$ 662,77</td></tr>
-                  <tr><td>Acima de R$ 4.664,68</td><td style="text-align:right">27,5%</td><td style="text-align:right">R$ 896,00</td></tr>
+                  <tr><td>Até R$ 27.110,40</td><td style="text-align:right">0%</td><td style="text-align:right">—</td></tr>
+                  <tr><td>R$ 27.110 – R$ 33.919</td><td style="text-align:right">7,5%</td><td style="text-align:right">R$ 2.033</td></tr>
+                  <tr><td>R$ 33.919 – R$ 45.012</td><td style="text-align:right">15%</td><td style="text-align:right">R$ 4.577</td></tr>
+                  <tr><td>R$ 45.012 – R$ 55.976</td><td style="text-align:right">22,5%</td><td style="text-align:right">R$ 7.953</td></tr>
+                  <tr><td>Acima de R$ 55.976</td><td style="text-align:right">27,5%</td><td style="text-align:right">R$ 10.752</td></tr>
                 </tbody>
               </table>
-              <div class="tax-note">Tabela vigente conforme Lei 14.848/2024. Aplicável à previdência em regime progressivo — retenção de 15% na fonte, com ajuste na declaração anual. Valores sujeitos a atualização legislativa.</div>
+              <div class="tax-note">Lei 14.848/2024. Prev. progressiva: retenção 15% na fonte, ajuste na DIRPF. Valores sujeitos a atualização.</div>
+            </div>
+
+            <!-- IOF -->
+            <div class="tax-card">
+              <div class="tax-card-title iof">IOF Regressivo (primeiros 30 dias)</div>
+              <table class="tax-mini">
+                <thead><tr><th>Dia</th><th>1</th><th>5</th><th>10</th><th>15</th><th>20</th><th>25</th><th>29</th><th>30</th></tr></thead>
+                <tbody>
+                  <tr><td>IOF%</td><td style="text-align:right">96</td><td style="text-align:right">83</td><td style="text-align:right">66</td><td style="text-align:right">50</td><td style="text-align:right">33</td><td style="text-align:right">16</td><td style="text-align:right">3</td><td style="text-align:right">0</td></tr>
+                </tbody>
+              </table>
+              <div class="tax-note">Decreto 6.306/2007. Sobre rendimento bruto, deduzido antes do IR. Isentos: LCI/LCA, CRI, CRA, Deb. Inc., Previdência.</div>
             </div>
 
           </div>
@@ -632,37 +714,38 @@ td.vl{color:var(--green);font-weight:500}
 </div>
 
 <script>
-const R = (id) => parseFloat(document.getElementById(id).value) || 0;
-const Rpct = (id) => R(id) / 100;
-const Rtxt = (id) => document.getElementById(id).value.trim() || id;
+/* ═══ UTILITÁRIOS ═══════════════════════════════════ */
+const R    = id => parseFloat(document.getElementById(id).value) || 0;
+const Rpct = id => R(id) / 100;
+const Rtxt = id => document.getElementById(id).value.trim() || id;
+const Rsel = id => document.getElementById(id).value;
 
-const fmtBRL = n => 'R$\u00a0' + n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
-const fmtPct = n => (n*100).toFixed(2)+'%';
+const fmtBRL   = n => 'R$\u00a0' + n.toLocaleString('pt-BR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const fmtPct   = n => (n*100).toFixed(2)+'%';
 const fmtPctSm = n => (n*100).toFixed(1)+'%';
 
+/* ═══ PRAZO ═════════════════════════════════════════ */
 function getPrazo(){
   const val  = R('prazo-val');
-  const unit = document.getElementById('prazo-unit').value;
+  const unit = Rsel('prazo-unit');
   let du, dc;
-  if(unit==='anos'){
-    du = Math.round(val*252);
-    dc = Math.round(val*365);
-  } else if(unit==='meses'){
-    du = Math.round(val*21);
-    dc = Math.round(val*30.4375);
-  } else if(unit==='du'){
-    du = Math.round(val);
-    dc = Math.round(val*365/252);
-  } else {
-    dc = Math.round(val);
-    du = Math.round(val*252/365);
-  }
+  if(unit==='anos'){       du = Math.round(val*252); dc = Math.round(val*365); }
+  else if(unit==='meses'){ du = Math.round(val*21);  dc = Math.round(val*30.4375); }
+  else if(unit==='du'){    du = Math.round(val);      dc = Math.round(val*365/252); }
+  else {                   dc = Math.round(val);      du = Math.round(val*252/365); }
   document.getElementById('du-display').textContent = du;
   document.getElementById('dc-display').textContent = dc;
   return {du, dc};
 }
 
-/* ─── Alíquota IR — tabela regressiva renda fixa ─── */
+/* ═══ IOF REGRESSIVO (Decreto 6.306/2007) ══════════ */
+const IOF_TABLE = [96,93,90,86,83,80,76,73,70,66,63,60,56,53,50,46,43,40,36,33,30,26,23,20,16,13,10,6,3,0];
+function getIOF(dc){
+  if(dc<1||dc>=30) return 0;
+  return IOF_TABLE[dc-1]/100;
+}
+
+/* ═══ IR REGRESSIVA — RENDA FIXA (Lei 11.033/2004) ═ */
 function getAliq(dc){
   if(dc<=180) return 0.225;
   if(dc<=360) return 0.20;
@@ -670,186 +753,299 @@ function getAliq(dc){
   return 0.15;
 }
 
-/* ─── Alíquota Previdência — regime regressivo ───── */
+/* ═══ IR REGRESSIVA — FUNDO CURTO PRAZO ════════════ */
+function getAliqCP(dc){
+  if(dc<=180) return 0.225;
+  return 0.20; /* mínimo 20% para fundos CP */
+}
+
+/* ═══ IR REGRESSIVA — PREVIDÊNCIA (Lei 11.053/2004) ═ */
 function getAliqPrev(dc){
-  const anos = dc / 365;
-  if(anos<=2) return 0.35;
-  if(anos<=4) return 0.30;
-  if(anos<=6) return 0.25;
-  if(anos<=8) return 0.20;
-  if(anos<=10) return 0.15;
+  const a = dc/365;
+  if(a<=2)  return 0.35;
+  if(a<=4)  return 0.30;
+  if(a<=6)  return 0.25;
+  if(a<=8)  return 0.20;
+  if(a<=10) return 0.15;
   return 0.10;
 }
 
-/* ─── Alíquota Previdência — regime progressivo ──── */
-/* Simplificação: usa faixa efetiva aproximada sobre o ganho/montante */
-function getAliqPrevProg(baseCalc){
-  /* Tabela IRPF 2024 mensal aplicada sobre valor de resgate
-     Como é resgate pontual, assume tributação exclusiva na fonte.
-     Simplificação: calcula alíquota efetiva sobre o valor base */
-  if(baseCalc <= 2259.20*12) return 0;
-  if(baseCalc <= 2826.65*12) return 0.075;
-  if(baseCalc <= 3751.05*12) return 0.15;
-  if(baseCalc <= 4664.68*12) return 0.225;
-  return 0.275;
+/* ═══ IR PROGRESSIVO — CÁLCULO POR FAIXAS ══════════ */
+/* Tabela anual IRPF (Lei 14.848/2024)
+   Calcula IR real com parcelas dedutíveis — NÃO alíquota flat */
+function calcIRProgressivo(base){
+  if(base<=0) return 0;
+  if(base<=27110.40) return 0;
+  if(base<=33919.80) return base*0.075 - 2033.28;
+  if(base<=45012.60) return base*0.15  - 4577.28;
+  if(base<=55976.16) return base*0.225 - 7953.72;
+  return base*0.275 - 10752.00;
 }
 
-/* ─── Cálculo de fundo com come-cotas ────────────── */
-function calcFundo(cap,du,dc,taxa,aliqCC){
-  const nCC = Math.floor(du/126);
-  if(nCC===0){
-    const vb = cap*Math.pow(1+taxa,du/252);
-    const aliq = getAliq(dc);
-    const ir = (vb-cap)*aliq;
-    return {vb,ir,vl:vb-ir};
+/* ═══ VALOR BRUTO POR INDEXADOR ════════════════════ */
+function calcGross(cap, du, dc, taxa, idx, cdi, ipca, selic){
+  switch(idx){
+    case 'pct_cdi': {
+      const t = cdi*(taxa/100);
+      return { vb: cap*Math.pow(1+t, du/252), baseDU: true };
+    }
+    case 'cdi_plus': {
+      const t = cdi + taxa/100;
+      return { vb: cap*Math.pow(1+t, du/252), baseDU: true };
+    }
+    case 'ipca_plus': {
+      const t = (1+ipca)*(1+taxa/100)-1;
+      return { vb: cap*Math.pow(1+t, dc/365), baseDU: false };
+    }
+    case 'pre': {
+      return { vb: cap*Math.pow(1+taxa/100, du/252), baseDU: true };
+    }
+    default:
+      return { vb: cap, baseDU: true };
   }
+}
+
+/* ═══ FUNDO COM COME-COTAS ═════════════════════════ */
+function calcFundo(cap, du, dc, taxaBruta, txAdmPct, aliqCC){
+  const taxa = Math.max(0, taxaBruta - txAdmPct/100);
+  const nCC  = Math.floor(du/126);
+  const isCP = aliqCC >= 0.20;
+  const aliqIR = isCP ? getAliqCP(dc) : getAliq(dc);
+
+  if(nCC===0){
+    const vb = cap*Math.pow(1+taxa, du/252);
+    const ganho = vb-cap;
+    const iofR = getIOF(dc);
+    const iof = ganho*iofR;
+    const ir  = (ganho-iof)*aliqIR;
+    return { vb, ded: iof+ir, vl: vb-iof-ir };
+  }
+
   let capital = cap, totalCC = 0;
   for(let i=0;i<nCC;i++){
-    const vbP = capital*Math.pow(1+taxa,126/252);
-    const cc = (vbP-capital)*aliqCC;
-    totalCC += cc;
-    capital = vbP-cc;
+    const vbP = capital*Math.pow(1+taxa, 126/252);
+    const cc  = (vbP-capital)*aliqCC;
+    totalCC  += cc;
+    capital   = vbP - cc;
   }
-  const duRes = du-nCC*126;
-  const vbFinal = duRes>0 ? capital*Math.pow(1+taxa,duRes/252) : capital;
-  const aliq = getAliq(dc);
-  const irCompl = Math.max(0,(vbFinal-cap)*aliq-totalCC);
-  const irTotal = totalCC+irCompl;
-  return {vb:vbFinal,ir:irTotal,vl:vbFinal-irCompl};
+  const duRes   = du - nCC*126;
+  const vbFinal = duRes>0 ? capital*Math.pow(1+taxa, duRes/252) : capital;
+  const irCompl = Math.max(0, (vbFinal-cap)*aliqIR - totalCC);
+  return { vb: vbFinal, ded: totalCC+irCompl, vl: vbFinal - irCompl };
 }
 
 /* ═══════════════════════════════════════════════════ */
+/*            CÁLCULO PRINCIPAL                       */
+/* ═══════════════════════════════════════════════════ */
 function calc(){
-  const cap   = R('cap');
-  const {du, dc} = getPrazo();
-  const cdi   = Rpct('cdi');
-  const selic = Rpct('selic');
-  const ipca  = Rpct('ipca');
-  const tr    = Rpct('tr');
-  const aliq  = getAliq(dc);
-  const regime = document.getElementById('prevRegime').value;
-  const aliqPrev = getAliqPrev(dc);
+  const cap     = R('cap');
+  const {du,dc} = getPrazo();
+  const cdi     = Rpct('cdi');
+  const selic   = Rpct('selic');
+  const ipca    = Rpct('ipca');
+  const tr      = Rpct('tr');
+  const aliq    = getAliq(dc);
+  const iofRate = getIOF(dc);
+  const regime  = Rsel('prevRegime');
+  const aliqPrev= getAliqPrev(dc);
 
+  /* ── Pills ───────────────────────────────────── */
   document.getElementById('ir-pill').textContent = 'IR RF: '+fmtPctSm(aliq);
+  const iofPill = document.getElementById('ir-pill-iof');
+  if(dc<30){ iofPill.style.display='inline-block'; iofPill.textContent='IOF: '+fmtPctSm(iofRate); }
+  else { iofPill.style.display='none'; }
   document.getElementById('ir-pill-prev').textContent = 'Prev regr.: '+fmtPctSm(aliqPrev);
 
-  const mk = (name,vb,ir,vl,fiscal,ftype,base)=>({
-    name,vb,ir,vl,
-    rp:vl/cap-1,
-    raa:Math.pow(1+vl/cap-1,base)-1,
-    fiscal,ftype
+  /* ── Helper: resultado ───────────────────────── */
+  const mk = (name,vb,ded,vl,fiscal,ftype,anuBase)=>({
+    name, vb, ded, vl,
+    rp:  vl/cap-1,
+    raa: Math.pow(Math.max(0, vl/cap), anuBase)-1,
+    fiscal, ftype
   });
 
-  /* ── CDB ──────────────────────────────────────── */
-  const cdbT = cdi*Rpct('pctCDB');
-  const cdbVb = cap*Math.pow(1+cdbT,du/252);
-  const cdbIr = (cdbVb-cap)*aliq;
-
-  /* ── LCI ──────────────────────────────────────── */
-  const lciT = cdi*Rpct('pctLCI');
-  const lciVl = cap*Math.pow(1+lciT,du/252);
-
-  /* ── Debênture Incentivada (IPCA+, base DC/365, isento) ── */
-  const debNome = Rtxt('debNome');
-  const debT = (1+ipca)*(1+Rpct('sprDeb'))-1;
-  const debVl = cap*Math.pow(1+debT,dc/365);
-
-  /* ── CRI (IPCA+, base DC/365, isento PF) ─────── */
-  const criNome = Rtxt('criNome');
-  const criT = (1+ipca)*(1+Rpct('sprCRI'))-1;
-  const criVl = cap*Math.pow(1+criT,dc/365);
-
-  /* ── CRA (IPCA+, base DC/365, isento PF) ─────── */
-  const craNome = Rtxt('craNome');
-  const craT = (1+ipca)*(1+Rpct('sprCRA'))-1;
-  const craVl = cap*Math.pow(1+craT,dc/365);
-
-  /* ── Tesouro IPCA+ ───────────────────────────── */
-  const tiT = (1+ipca)*(1+Rpct('sprTIPCA'))-1;
-  const tiVb = cap*Math.pow(1+tiT,du/252);
-  const tiIr = (tiVb-cap)*aliq;
-
-  /* ── Tesouro Prefixado ───────────────────────── */
-  const tpVb = cap*Math.pow(1+Rpct('txTPre'),du/252);
-  const tpIr = (tpVb-cap)*aliq;
-
-  /* ── Tesouro Selic ───────────────────────────── */
-  const tsT = selic*Rpct('pctTSelic');
-  const tsVb = cap*Math.pow(1+tsT,du/252);
-  const tsIr = (tsVb-cap)*aliq;
-
-  /* ── Fundos (come-cotas) ─────────────────────── */
-  const rflp = calcFundo(cap,du,dc,cdi*Rpct('pctRFLP'),0.15);
-  const mm   = calcFundo(cap,du,dc,cdi*Rpct('pctMM'),0.15);
-
-  /* ── VGBL (sem come-cotas, IR sobre rendimento) ── */
-  const vgblT = cdi*Rpct('pctVGBL');
-  const vgblVb = cap*Math.pow(1+vgblT,du/252);
-  const vgblGanho = vgblVb - cap;
-  let vgblAliq;
-  if(regime==='regressivo'){
-    vgblAliq = aliqPrev;
-  } else {
-    vgblAliq = getAliqPrevProg(vgblGanho);
+  /* ── Helper: tributável simples com IOF ──────── */
+  function tribSimples(ganho){
+    const iof = ganho * iofRate;
+    const ir  = (ganho - iof) * aliq;
+    return { iof, ir, ded: iof+ir };
   }
-  const vgblIr = vgblGanho * vgblAliq;
-  const vgblVl = vgblVb - vgblIr;
 
-  /* ── PGBL (sem come-cotas, IR sobre montante total) ── */
-  const pgblT = cdi*Rpct('pctPGBL');
-  const pgblVb = cap*Math.pow(1+pgblT,du/252);
-  let pgblAliq;
-  if(regime==='regressivo'){
-    pgblAliq = aliqPrev;
-  } else {
-    pgblAliq = getAliqPrevProg(pgblVb);
+  function fiscalLabel(iof){
+    let l = fmtPctSm(aliq)+' IR';
+    if(iof>0.005) l = 'IOF+'+l;
+    return l;
   }
-  /* PGBL: IR incide sobre o valor TOTAL do resgate */
-  const pgblIr = pgblVb * pgblAliq;
-  const pgblVl = pgblVb - pgblIr;
 
-  /* ── Capitalização (TR + taxa, IR regressivo RF) ── */
-  const capT = (1+tr)*(1+Rpct('txCap'))-1;
-  const capVb = cap*Math.pow(1+capT,dc/365);
-  const capIr = (capVb-cap)*aliq;
-  const capVl = capVb - capIr;
+  const results = [];
 
-  /* ── Montar resultados ───────────────────────── */
-  const prevLabel = regime==='regressivo'
-    ? fmtPctSm(aliqPrev)+' regr.'
-    : 'Progr.';
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  /* CDB pós (% CDI) — DU/252, IR regressiva, IOF   */
+  /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  {
+    const t = cdi*Rpct('pctCDB');
+    const vb = cap*Math.pow(1+t, du/252);
+    const {iof,ded} = tribSimples(vb-cap);
+    results.push(mk('CDB pós', vb, ded, vb-ded, fiscalLabel(iof), 'trib', 252/du));
+  }
 
-  const results = [
-    mk('CDB',              cdbVb, cdbIr,      cdbVb-cdbIr, fmtPctSm(aliq)+' IR',  'trib', 252/du),
-    mk('LCI',              lciVl, 0,           lciVl,       'Isento IR',            'isento',252/du),
-    mk(debNome,             debVl, 0,           debVl,       'Isento IR',            'isento',365/dc),
-    mk(criNome,             criVl, 0,           criVl,       'Isento IR',            'isento',365/dc),
-    mk(craNome,             craVl, 0,           craVl,       'Isento IR',            'isento',365/dc),
-    mk('Tesouro IPCA+',    tiVb,  tiIr,        tiVb-tiIr,   fmtPctSm(aliq)+' IR',  'trib', 252/du),
-    mk('Tesouro Prefixado', tpVb, tpIr,        tpVb-tpIr,   fmtPctSm(aliq)+' IR',  'trib', 252/du),
-    mk('Tesouro Selic',    tsVb,  tsIr,        tsVb-tsIr,   fmtPctSm(aliq)+' IR',  'trib', 252/du),
-    mk('Fundo RF LP',      rflp.vb,rflp.ir,    rflp.vl,     'Come-cotas 15%',       'cc',   252/du),
-    mk('Fundo MM',         mm.vb,  mm.ir,      mm.vl,       'Come-cotas 15%',       'cc',   252/du),
-    mk('VGBL',             vgblVb, vgblIr,     vgblVl,      prevLabel,              'prev', 252/du),
-    mk('PGBL',             pgblVb, pgblIr,     pgblVl,      prevLabel+' (total)',   'prev', 252/du),
-    mk('Capitalização',    capVb,  capIr,      capVl,       fmtPctSm(aliq)+' IR',  'cap',  365/dc),
-  ].sort((a,b)=>b.vl-a.vl);
+  /* ━━━ CDB IPCA+ — DC/365, IR, IOF ━━━━━━━━━━━━━ */
+  {
+    const t = (1+ipca)*(1+Rpct('sprCDBipca'))-1;
+    const vb = cap*Math.pow(1+t, dc/365);
+    const {iof,ded} = tribSimples(vb-cap);
+    results.push(mk('CDB IPCA+', vb, ded, vb-ded, fiscalLabel(iof), 'trib', 365/dc));
+  }
 
-  // Winner
+  /* ━━━ CDB Prefixado — DU/252, IR, IOF ━━━━━━━━━ */
+  {
+    const vb = cap*Math.pow(1+Rpct('txCDBpre'), du/252);
+    const {iof,ded} = tribSimples(vb-cap);
+    results.push(mk('CDB Pré', vb, ded, vb-ded, fiscalLabel(iof), 'trib', 252/du));
+  }
+
+  /* ━━━ LCI/LCA — DU/252, isento IR, isento IOF ━━ */
+  {
+    const t = cdi*Rpct('pctLCI');
+    const vl = cap*Math.pow(1+t, du/252);
+    results.push(mk('LCI/LCA', vl, 0, vl, 'Isento IR', 'isento', 252/du));
+  }
+
+  /* ━━━ Crédito privado isento (Deb, CRI, CRA) ━━━ */
+  const credPriv = [
+    { nomeId:'debNome', idxId:'debIdx', txId:'sprDeb' },
+    { nomeId:'criNome', idxId:'criIdx', txId:'sprCRI' },
+    { nomeId:'craNome', idxId:'craIdx', txId:'sprCRA' },
+  ];
+  for(const c of credPriv){
+    const nome = Rtxt(c.nomeId);
+    const sel  = Rsel(c.idxId);
+    const taxa = R(c.txId);
+    const idx  = sel==='ipca'?'ipca_plus' : sel==='cdi'?'cdi_plus' : 'pre';
+    const {vb, baseDU} = calcGross(cap, du, dc, taxa, idx, cdi, ipca, selic);
+    results.push(mk(nome, vb, 0, vb, 'Isento IR', 'isento', baseDU?252/du:365/dc));
+  }
+
+  /* ━━━ Tesouro IPCA+ — DU/252, IR, IOF, custódia ━ */
+  {
+    const custRate = Rpct('txCustB3');
+    const t = (1+ipca)*(1+Rpct('sprTIPCA'))-1;
+    const vb = cap*Math.pow(1+t, du/252);
+    const custodia = cap*custRate*(dc/365);
+    const ganho = vb-cap;
+    const iof = ganho*iofRate;
+    const ir = (ganho-iof)*aliq;
+    const ded = iof+ir+custodia;
+    results.push(mk('Tesouro IPCA+', vb, ded, vb-ded, fiscalLabel(iof), 'trib', 252/du));
+  }
+
+  /* ━━━ Tesouro Prefixado — DU/252, IR, IOF, cust. ━ */
+  {
+    const custRate = Rpct('txCustB3');
+    const vb = cap*Math.pow(1+Rpct('txTPre'), du/252);
+    const custodia = cap*custRate*(dc/365);
+    const ganho = vb-cap;
+    const iof = ganho*iofRate;
+    const ir = (ganho-iof)*aliq;
+    const ded = iof+ir+custodia;
+    results.push(mk('Tesouro Pré', vb, ded, vb-ded, fiscalLabel(iof), 'trib', 252/du));
+  }
+
+  /* ━━━ Tesouro Selic — Selic + spread, DU/252 ━━━━ */
+  {
+    const custRate = Rpct('txCustB3');
+    const t = selic + Rpct('sprTSelic');
+    const vb = cap*Math.pow(1+t, du/252);
+    const custodia = cap>10000 ? cap*custRate*(dc/365) : 0;
+    const ganho = vb-cap;
+    const iof = ganho*iofRate;
+    const ir = (ganho-iof)*aliq;
+    const ded = iof+ir+custodia;
+    results.push(mk('Tesouro Selic', vb, ded, vb-ded, fiscalLabel(iof), 'trib', 252/du));
+  }
+
+  /* ━━━ Fundo RF ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  {
+    const txBruta = cdi*Rpct('pctRFLP');
+    const txAdm   = R('txAdmRF');
+    const prazo   = Rsel('fundoRFprazo');
+    const aliqCC  = prazo==='cp' ? 0.20 : 0.15;
+    const f = calcFundo(cap, du, dc, txBruta, txAdm, aliqCC);
+    const sfx = prazo==='cp'?'CP':'LP';
+    results.push(mk('Fundo RF '+sfx, f.vb, f.ded, f.vl, 'CC '+fmtPctSm(aliqCC)+' '+sfx, 'cc', 252/du));
+  }
+
+  /* ━━━ Fundo MM ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  {
+    const txBruta = cdi*Rpct('pctMM');
+    const txAdm   = R('txAdmMM');
+    const prazo   = Rsel('fundoMMprazo');
+    const aliqCC  = prazo==='cp' ? 0.20 : 0.15;
+    const f = calcFundo(cap, du, dc, txBruta, txAdm, aliqCC);
+    const sfx = prazo==='cp'?'CP':'LP';
+    results.push(mk('Fundo MM '+sfx, f.vb, f.ded, f.vl, 'CC '+fmtPctSm(aliqCC)+' '+sfx, 'cc', 252/du));
+  }
+
+  /* ━━━ VGBL — sem come-cotas, IR sobre rendimento ━ */
+  {
+    const t = cdi*Rpct('pctVGBL');
+    const vb = cap*Math.pow(1+t, du/252);
+    const ganho = vb-cap;
+    const ir = regime==='regressivo' ? ganho*aliqPrev : calcIRProgressivo(ganho);
+    const vl = vb - ir;
+    const label = regime==='regressivo' ? fmtPctSm(aliqPrev)+' regr.' : 'Progr.';
+    results.push(mk('VGBL', vb, ir, vl, label, 'prev', 252/du));
+  }
+
+  /* ━━━ PGBL — sem come-cotas, IR sobre total ━━━━━ */
+  {
+    const t = cdi*Rpct('pctPGBL');
+    const vb = cap*Math.pow(1+t, du/252);
+    const ir = regime==='regressivo' ? vb*aliqPrev : calcIRProgressivo(vb);
+    const vl = vb - ir;
+    const label = regime==='regressivo'
+      ? fmtPctSm(aliqPrev)+' regr. (total)'
+      : 'Progr. (total)';
+    results.push(mk('PGBL', vb, ir, vl, label, 'prev', 252/du));
+
+    /* Benefício fiscal PGBL */
+    const beneficio = cap * Rpct('aliqMarginal');
+    document.getElementById('pgbl-benef').textContent = fmtBRL(beneficio);
+  }
+
+  /* ━━━ Capitalização — apenas quota rende TR + tx ━ */
+  {
+    const quota    = Rpct('quotaCap');
+    const capEfet  = cap * quota;
+    const capMorta = cap - capEfet;
+    const taxaCap  = (1+tr)*(1+Rpct('txCap'))-1;
+    const vbRende  = capEfet * Math.pow(1+taxaCap, dc/365);
+    const vb       = vbRende + capMorta;
+    const ganho    = Math.max(0, vb-cap);
+    const ir       = ganho * aliq;
+    const vl       = vb - ir;
+    const label    = ganho>0 ? fmtPctSm(aliq)+' IR' : 'Sem ganho';
+    results.push(mk('Capitalização', vb, ir, vl, label, 'cap', 365/dc));
+  }
+
+  /* ━━━ Ordenar por VL ━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+  results.sort((a,b)=>b.vl-a.vl);
+
+  /* ── Winner ──────────────────────────────────── */
   const w = results[0];
   document.getElementById('w-name').textContent = w.name;
   document.getElementById('w-vl').textContent   = fmtBRL(w.vl);
   document.getElementById('w-rp').textContent   = fmtPct(w.rp);
   document.getElementById('w-raa').textContent  = fmtPct(w.raa);
 
-  // Table
+  /* ── Tabela ──────────────────────────────────── */
   const badgeClass = {isento:'b-isento',trib:'b-trib',cc:'b-cc',prev:'b-prev',cap:'b-cap'};
   document.getElementById('tbody').innerHTML = results.map((r,i)=>{
     const rankCls = i===0?'rank-1':'rank-n';
     return `<tr class="${i===0?'winner-row':''}">
       <td><span class="rank ${rankCls}">${i+1}</span>${r.name}</td>
       <td>${fmtBRL(r.vb)}</td>
-      <td class="${r.ir>0?'':'zero'}">${r.ir>0?fmtBRL(r.ir):'—'}</td>
+      <td class="${r.ded>0.005?'':'zero'}">${r.ded>0.005?fmtBRL(r.ded):'—'}</td>
       <td class="vl">${fmtBRL(r.vl)}</td>
       <td>${fmtPct(r.rp)}</td>
       <td>${fmtPct(r.raa)}</td>
@@ -857,30 +1053,25 @@ function calc(){
     </tr>`;
   }).join('');
 
-  // Footer
+  /* ── Footer ──────────────────────────────────── */
   const nCC = Math.floor(du/126);
-  let footer = `Capital: ${fmtBRL(cap)} · ${du} DU / ${dc} DC · CDI ${fmtPctSm(cdi)} · Selic ${fmtPctSm(selic)} · IPCA ${fmtPctSm(ipca)} · TR ${fmtPctSm(tr)}`;
-  if(nCC>0) footer += ` · Come-cotas: ${nCC} evento${nCC>1?'s':''}`;
-  footer += ` · Prev. ${regime} ${fmtPctSm(regime==='regressivo'?aliqPrev:0)}`;
-  footer += ` · Cálculos para PF. Não constitui recomendação de investimento.`;
-  document.getElementById('footer-note').textContent = footer;
+  let f = `Capital: ${fmtBRL(cap)} · ${du} DU / ${dc} DC · CDI ${fmtPctSm(cdi)} · Selic ${fmtPctSm(selic)} · IPCA ${fmtPctSm(ipca)} · TR ${fmtPctSm(tr)}`;
+  if(iofRate>0) f += ` · IOF ${fmtPctSm(iofRate)}`;
+  if(nCC>0) f += ` · Come-cotas: ${nCC}×`;
+  f += ` · Prev. ${regime} · PF. Não constitui recomendação.`;
+  document.getElementById('footer-note').textContent = f;
 
-  /* ── Highlight active rows in tax tables ──────── */
-  // RF table
-  const rfRows = document.querySelectorAll('#tb-rf tr');
-  rfRows.forEach(r=>r.classList.remove('active-row'));
-  let rfIdx = dc<=180?0 : dc<=360?1 : dc<=720?2 : 3;
-  if(rfRows[rfIdx]) rfRows[rfIdx].classList.add('active-row');
-
-  // Prev table
-  const prevRows = document.querySelectorAll('#tb-prev tr');
-  prevRows.forEach(r=>r.classList.remove('active-row-prev'));
+  /* ── Highlight tabelas tributação ─────────────── */
+  document.querySelectorAll('#tb-rf tr').forEach((r,i)=>{
+    r.classList.toggle('active-row', i===(dc<=180?0:dc<=360?1:dc<=720?2:3));
+  });
   const anos = dc/365;
-  let prevIdx = anos<=2?0 : anos<=4?1 : anos<=6?2 : anos<=8?3 : anos<=10?4 : 5;
-  if(prevRows[prevIdx]) prevRows[prevIdx].classList.add('active-row-prev');
+  document.querySelectorAll('#tb-prev tr').forEach((r,i)=>{
+    r.classList.toggle('active-row-prev', i===(anos<=2?0:anos<=4?1:anos<=6?2:anos<=8?3:anos<=10?4:5));
+  });
 }
 
-/* ── Listeners ──────────────────────────────────── */
+/* ═══ LISTENERS ═════════════════════════════════════ */
 document.querySelectorAll('input').forEach(el=>el.addEventListener('input',calc));
 document.querySelectorAll('select').forEach(el=>el.addEventListener('change',calc));
 calc();
